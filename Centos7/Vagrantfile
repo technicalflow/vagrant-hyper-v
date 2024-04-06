@@ -3,13 +3,14 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/centos7"
+  config.vm.hostname = "mshasce7test01"
   config.vm.provider "hyperv"
-  config.vm.network "public_network", bridge: "External", ip: "192.168.50.113", auto_config: true
+  config.vm.network "public_network", bridge: "External", ip: "192.168.50.21", auto_config: true
 
 #  config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
   config.vm.provider "hyperv" do |h|
-    h.enable_virtualization_extensions = true
+    h.enable_virtualization_extensions = false
     h.linked_clone = true
     h.memory = 1024
     h.cpus = 2
